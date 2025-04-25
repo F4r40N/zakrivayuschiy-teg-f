@@ -15,7 +15,7 @@
   min-block-size: 100dvb;
   color: var(--black-color, #000);
   font-family: var(--main-font), sans-serif;
-  font-size: var(--main-text-size) 18px;
+  font-size: var(--main-text-size);
   font-variation-settings: 'wght' var(--font-normal);
   background-image: var(--background);                  
   background-position: center;
@@ -27,7 +27,6 @@
 .header {
   display: flex;
   flex-direction: column;
-  min-height: 368px;
   margin-block-start: 100px;
   margin-block-end: 100px;
   margin-inline: auto;
@@ -35,14 +34,13 @@
   padding-block: 128px;
   background-color: var(--white-color, #fff);
   text-align: center;
-  font-family: var(--accent-font), sans-serif;
+  font-family: var(--accent-font), fantasy, sans-serif;
   text-transform: uppercase;
   border: 2px solid var(--black-color, #000);
 }
 
-@media (width >= 375px) {
+@media (width <= 376px) {
   .header {
-    min-height: 327px;
     padding-block: 120px;
   }
 }
@@ -71,12 +69,13 @@
 }
 
 .card__title {
-  font-variation-settings: "wght" var(--font-bold), 700;
+  font-size: var(--main-text-size, 18px);
+  font-variation-settings: "wght" var(--font-bold, 700);
   padding: 5px 10px;
   border: 2px solid var(--black-color, #000);
 }
 
-@media (width >= 375px) {
+@media (width <= 376px) {
   .card__title {
     padding: 3px 10px;
   }
@@ -89,7 +88,7 @@
   border: 2px solid var(--black-color, #000);
 }
 
-@media (width <= 375px) {
+@media (width <= 376px) {
   .card__image {
     max-height: 375px;
   }
@@ -98,22 +97,27 @@
 .image {
   inline-size: 100%;
   object-fit: cover;
+  object-position: center;
 }
 
 .watermark {
   position: absolute;
   z-index: 2;
-  font-family: var(--accent-font);
+  font-family: var(--accent-font), fantasy;
   font-size: 14px;
   color: #000;
   opacity: 50%;
   background-blend-mode: hard-light;
-  -webkit-text-stroke: 1px var(--white-color, #fff);
+  text-shadow:
+    -1px 0 var(--white-color), 
+    0 1px var(--white-color),  
+    1px 0 var(--white-color), 
+    0 -1px var(--white-color);
   top: var(--main-gap);
   right: var(--main-gap);
 }
 
-@media (width >= 375px) {
+@media (width <= 376px) {
   .watermark {
     right: 15px;
   }
@@ -121,6 +125,8 @@
 
 @supports (text-stroke: 1px var(--white-color, #fff)) {
   .watermark {
+    text-shadow: none;
+    -webkit-text-stroke: 1px var(--white-color);
     text-stroke: 1px var(--white-color, #fff);
   }
 }
@@ -136,16 +142,15 @@
   line-height: 21px;
 }
 
-@media (width >= 375px) {
+@media (width <= 376px) {
   .card__content {
     padding-inline: 27px;
-    padding-top: 21px;
   }
 }
 
 .card__buttons {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   align-items: center;
   height: fit-content;
   padding-top: 2px;
@@ -198,13 +203,16 @@
   height: 36px;
 }
 
-@media (width >= 375px) {
+@media (width <= 376px) {
   .card__like-button {
     width: 127px;
+    height: 34px;
   }
 }
 
 .card__icon-button {
+  display: flex;
+  align-items: center;
   background-color: transparent;
   border: none;
   height: 36px;
@@ -213,9 +221,9 @@
   cursor: pointer;
 }
 
-@media (width >= 375px) {
+@media (width <= 376px) {
   .card__icon-button {
-    height: 40px;
+    height: 33px;
   }
 }
 
@@ -299,7 +307,6 @@
 }
 
 .dialog__button {
-  flex-direction: row;
   gap: 8px;
   margin-block-start: 54px;
   margin-block-end: 100px;
@@ -309,10 +316,8 @@
   color: var(--white-color, #fff);
 }
 
-@media (width <= 375px) {
+@media (width <= 376px) {
   .dialog__button {
-    display: flex;
-    flex-direction: column;
     width: 306px;
   }
 }
@@ -326,7 +331,7 @@
   color: var(--white-color, #fff);
 }
 
-@media (width >= 375px) {
+@media (width <= 376px) {
   .floppy {
     width: 28px;
   }
