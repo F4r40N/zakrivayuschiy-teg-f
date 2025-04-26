@@ -85,7 +85,7 @@
   max-height: 696px;
   position: relative;
   overflow: hidden;
-  border: 2px solid var(--black-color, #000);
+  border-inline: 2px solid var(--black-color, #000);
 }
 
 @media (width <= 376px) {
@@ -123,7 +123,7 @@
   }
 }
 
-@supports (text-stroke: 1px var(--white-color, #fff)) {
+@supports (-webkit-text-stroke: 1px var(--white-color, #fff)) {
   .watermark {
     text-shadow: none;
     -webkit-text-stroke: 1px var(--white-color);
@@ -151,8 +151,8 @@
 .card__buttons {
   display: flex;
   justify-content: flex-end;
-  align-items: center;
-  height: fit-content;
+  min-block-size: 39px;
+  gap: 8px;
   padding-top: 2px;
 }
 
@@ -215,10 +215,10 @@
   align-items: center;
   background-color: transparent;
   border: none;
-  height: 36px;
   outline: 2px solid transparent;
   transition: color 0.3s ease;
   cursor: pointer;
+  padding: 0;
 }
 
 @media (width <= 376px) {
@@ -353,16 +353,34 @@
   padding: 0px;
 }
 
+@media (width <= 376px) {
+  .modal-window {
+    padding-inline: 9px;
+  }
+}
+
 .modal-window_button {
   text-transform: uppercase;
   height: 38px;
-  width: 100%;
+  width: 293px;
   padding: 0px;
+}
+
+@media (width <= 376px) {
+  .modal-window_button {
+    width: 257px;
+  }
 }
 
 .modal-window:is([open]) .modal-window_form {
   display: grid;
   gap: 30px;
+}
+
+@media (width <= 376px) {
+  .modal-window:is([open]) .modal-window_form {
+    row-gap: 30px;
+  }
 }
 
 .modal-window:is([open]) .floppy {
