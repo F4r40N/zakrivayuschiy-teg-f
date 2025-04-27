@@ -318,6 +318,7 @@
 
 @media (width <= 376px) {
   .dialog__button {
+    flex-direction: column;
     width: 306px;
   }
 }
